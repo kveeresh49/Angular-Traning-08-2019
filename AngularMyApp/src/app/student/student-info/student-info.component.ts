@@ -10,6 +10,7 @@ export class StudentInfoComponent implements OnInit,OnDestroy,AfterViewInit{
   course: string = "Angular";
   Students: any = ['sandeep', 'ajay'];
   width: number = 80
+  public bindingText:string;
 
   public names = [
     {
@@ -97,6 +98,10 @@ export class StudentInfoComponent implements OnInit,OnDestroy,AfterViewInit{
  console.log(item);
   }
 
+
+  getChnageValue(item) {
+    console.log(item.target.value);
+  }
 ngOnDestroy(){
  console.log('distroed');
 
