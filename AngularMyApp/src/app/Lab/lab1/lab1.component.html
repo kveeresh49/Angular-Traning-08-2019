@@ -1,0 +1,104 @@
+<div class="col-md-12">
+  Add Employee
+</div>
+
+
+<div class="col-md-12">
+  <div class="container">
+    <div class="row">
+          <form name="form" (ngSubmit)="lab1.valid && onSubmit(lab1)"  #lab1="ngForm" novalidate>
+
+              <div class="form-group row">
+                  <label for="id">ID</label>
+                  <span class="ml-3">
+                      <input type="text"  class="form-control" name="id"
+                      [(ngModel)]="model.id" #id="ngModel"
+                     [ngClass]="{ 'is-invalid': lab1.submitted && id.invalid }" required />
+                  </span>
+
+              </div>
+              <div class="form-group row">
+                  <label for="firstName">Name</label>
+                  <span class="ml-3">
+                      <input type="text"  class="form-control" name="firstName"
+                      [(ngModel)]="model.firstName" #firstName="ngModel"
+                     [ngClass]="{ 'is-invalid': lab1.submitted && firstName.invalid }" required />
+                  </span>
+
+              </div>
+
+              <div class="form-group row">
+                  <label for="salary">salary</label>
+                  <span class="ml-3">
+                      <input type="text"  class="form-control" name="salary"
+                      [(ngModel)]="model.salary" #salary="ngModel"
+                     [ngClass]="{ 'is-invalid': lab1.submitted && salary.invalid }" required />
+                  </span>
+
+              </div>
+              <div class="form-group row">
+                  <label for="department">Department</label>
+                  <span class="ml-3">
+                      <input type="text"  class="form-control" name="department"
+                      [(ngModel)]="model.department" #department="ngModel"
+                     [ngClass]="{ 'is-invalid': lab1.submitted && department.invalid }" required />
+                  </span>
+
+              </div>
+
+              <div class="form-group">
+                  <button class="btn btn-primary">Register</button>
+              </div>
+            </form>
+<div class="col-md-2">
+    {{lab1.value | json }}
+</div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div>List Of Employess</div>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col" (click)="sortOrder(myvalue=true)">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">sal</th>
+        <th scope="col">Department</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of getEmployeeData;let i = index">
+        <th >
+          {{item.id}}
+        </th>
+        <th>
+          {{item.firstName}}
+        </th>
+        <th>
+          {{item.salary}}
+        </th>
+        <th>
+            {{item.department}}
+          </th>
+
+        <th>
+          <button (click)="update(item,lab1)">
+            update
+          </button>
+        </th>
+        <th>
+            <button (click)="delete(i)">
+                delete
+              </button>
+        </th>
+      </tr>
+
+    </tbody>
+  </table>

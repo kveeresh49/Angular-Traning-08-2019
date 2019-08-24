@@ -1,0 +1,62 @@
+<form [formGroup]="profileForm" >
+
+
+  <div class="form-group">
+      <label>
+         ProductID
+          <input type="text" formControlName="productid">
+        </label>
+  </div>
+
+  <div class="form-group">
+      <label>
+          ProductName
+        <input type="text" formControlName="productName">
+      </label>
+      </div>
+      <div class="form-group">
+          <label>
+              ProductCost
+            <input type="text" formControlName="productCost">
+          </label>
+          </div>
+      <div class="form-group">
+         Product Category <select formControlName="productcategory">
+              <option value="Grocery">Grocery</option>
+              <option value="Mobile">Mobile</option>
+              <option value="Electronics & Cloths ">Electronics & Cloths </option>
+
+            </select>
+
+      </div>
+      <div class="form-group" >
+
+
+          productcategory: <span>
+              <div class="col-md-1">
+                  <input type="radio" formControlName="productOnline" name="productOnline" value="yes" checked> Yes<br>
+              </div>
+              <div class="col-md-1">
+                <input type="radio" formControlName="productOnline" name="productOnline" value="no"> no<br>
+  </div>
+          </span>
+          </div>
+
+
+      <div class="form-group">
+          productcategory:
+          <div class="row">
+              <div class="col-md-2">
+              <input type="checkbox" formControlName="productcheck" value="Big Bazar"> Big Bazar<br>
+              <input type="checkbox" formControlName="productcheck" checked> Dmart<br>
+              <input type="checkbox" formControlName="productcheck" checked> Mega Store<br>
+              </div>
+          </div>
+
+      </div>
+
+      <button (click)="sumit(profileForm)">Submit</button>
+  </form>
+
+
+  {{profileForm.value | json}}
