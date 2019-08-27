@@ -14,6 +14,7 @@ import { Lab2Component } from './Lab/lab2/lab2.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Lab3Component } from './Lab/lab3/lab3.component';
 import { Labserice } from './Lab/labservice';
+import { MarksStudentComponent } from './student/marks-student/marks-student.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { Labserice } from './Lab/labservice';
     NewInfoComponent,
     Lab1Component,
     Lab2Component,
-    Lab3Component
+    Lab3Component,
+    MarksStudentComponent
 
 
   ],

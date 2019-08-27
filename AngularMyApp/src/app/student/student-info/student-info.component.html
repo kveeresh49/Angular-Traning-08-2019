@@ -24,22 +24,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of names;let i = index"
-     [ngClass]=" {whiteColor: isStyleRequired(item)}"
-     [ngStyle]="{backgroundColor: getBackgroundColor(item)}">
-      <th >
+    <!-- [{},{}] -->
+    <tr *ngFor="let item of names;let i = index" [ngClass]=" {whiteColor: isStyleRequired(item)}"
+      [ngStyle]="{backgroundColor: getBackgroundColor(item)}">
+      <th>
         {{item.name}}
       </th>
       <th>
         {{item.age}}
       </th>
       <th>
-        {{item.sum}}
+        <app-marks-student (outMethod)="getChild($event)" [marks]="item.marks"></app-marks-student>
       </th>
 
-
       <th>
-        <img [src]="item.image" [width]= "width" [height]="width" style="border-radius: 66Px;"/>
+        <img [src]="item.image" [width]="width" [height]="width" style="border-radius: 66Px;" />
       </th>
       <th>
         <button style="border-radius: 20px;" (click)=getDetailsStudent(item)> Mybutton</button>
@@ -51,6 +50,6 @@
 
 <div class="col-md-12">
   Two Waybinding.
-  <input type="text" [(ngModel)]="bindingText"  id="bindingText" (change)="getChnageValue($event)"/>
+  <input type="text" [(ngModel)]="bindingText" id="bindingText" (change)="getChnageValue($event)" />
   {{bindingText}}
 </div>

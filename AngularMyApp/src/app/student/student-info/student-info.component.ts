@@ -5,12 +5,12 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
   templateUrl: './student-info.component.html',
   styleUrls: ['./student-info.component.css']
 })
-export class StudentInfoComponent implements OnInit,OnDestroy,AfterViewInit{
+export class StudentInfoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   course: string = "Angular";
   Students: any = ['sandeep', 'ajay'];
   width: number = 80
-  public bindingText:string;
+  public bindingText: string;
 
   public names = [
     {
@@ -52,13 +52,13 @@ export class StudentInfoComponent implements OnInit,OnDestroy,AfterViewInit{
 
   }
 
-  ngOnInit(){
+  ngOnInit() {
     console.log('Im from ng onint');
     this.objectManiplation();
 
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
 
     console.log('After view ')
   }
@@ -95,16 +95,20 @@ export class StudentInfoComponent implements OnInit,OnDestroy,AfterViewInit{
   }
 
   getDetailsStudent(item) {
- console.log(item);
+    console.log(item);
   }
 
 
   getChnageValue(item) {
     console.log(item.target.value);
   }
-ngOnDestroy(){
- console.log('distroed');
+  getChild(event) {
+    console.log(event);
+  }
 
-}
+  ngOnDestroy() {
+    console.log('distroed');
+
+  }
 
 }
