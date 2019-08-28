@@ -34,7 +34,7 @@
         {{item.age}}
       </th>
       <th>
-        <app-marks-student (outMethod)="getChild($event)" [marks]="item.marks"></app-marks-student>
+        <app-marks-student  #marksstudent  (outMethod)="getChild($event)" [name]="item.name" [marks]="item.marks"></app-marks-student>
       </th>
 
       <th>

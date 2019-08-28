@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
+import { MarksStudentComponent } from '../marks-student/marks-student.component';
 
 @Component({
   selector: 'app-student-info',
@@ -11,6 +12,7 @@ export class StudentInfoComponent implements OnInit, OnDestroy, AfterViewInit {
   Students: any = ['sandeep', 'ajay'];
   width: number = 80
   public bindingText: string;
+  @ViewChild('marksstudent', { static: false }) marksStudentComponent: MarksStudentComponent;
 
   public names = [
     {
@@ -55,6 +57,7 @@ export class StudentInfoComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     console.log('Im from ng onint');
     this.objectManiplation();
+    console.log(this.marksStudentComponent);
 
   }
 

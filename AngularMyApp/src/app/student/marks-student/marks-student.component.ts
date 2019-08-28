@@ -10,6 +10,7 @@ export class MarksStudentComponent implements OnInit {
 
   constructor() { }
   @Input() marks: any[];
+  @Input() name:string;
   @Output() outMethod = new EventEmitter();
 
 
@@ -20,12 +21,14 @@ export class MarksStudentComponent implements OnInit {
     this.marks.forEach((data) => {
       this.sum = this.sum + data
     });
-
   }
 
   outPutMethod() {
+    this.outMethod.emit({ name: this.name, marks: this.sum });
+  }
 
-    this.outMethod.emit({ name: 'veeresh', marks: this.sum });
+  getName(){
+    console.log(this.name);
   }
 
 }
