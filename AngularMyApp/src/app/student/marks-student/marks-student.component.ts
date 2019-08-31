@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef, ViewChild, AfterContentInit, ContentChild } from '@angular/core';
 
 
 @Component({
@@ -6,12 +6,18 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './marks-student.component.html',
   styleUrls: ['./marks-student.component.scss']
 })
-export class MarksStudentComponent implements OnInit {
+export class MarksStudentComponent implements OnInit,AfterContentInit {
 
   constructor() { }
   @Input() marks: any[];
-  @Input() name:string;
+  @Input() name: string;
   @Output() outMethod = new EventEmitter();
+  @Output() count1 = new EventEmitter();
+  @ViewChild('btnstyle1', { static: false }) btnstyle1: ElementRef;
+
+
+  public message: string = '';
+  count: number = 0;
 
 
   sum: any = 0;
@@ -23,12 +29,28 @@ export class MarksStudentComponent implements OnInit {
     });
   }
 
+  ngAfterContentInit(){
+    console.log(this.btnstyle1);
+  }
+
   outPutMethod() {
     this.outMethod.emit({ name: this.name, marks: this.sum });
   }
 
-  getName(){
+  getName() {
     console.log(this.name);
+  }
+
+
+  increaseByOne() {
+    this.count = this.count + 1;
+    this.message = "Counter: " + this.count;
+    this.count1.emit(this.message);
+  }
+  decreaseByOne() {
+    this.count = this.count - 1;
+    this.message = "Counter: " + this.count;
+    console.log(this.message);
   }
 
 }

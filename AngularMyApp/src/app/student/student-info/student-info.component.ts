@@ -1,5 +1,6 @@
-import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ViewChildren, ElementRef } from '@angular/core';
 import { MarksStudentComponent } from '../marks-student/marks-student.component';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-student-info',
@@ -13,6 +14,8 @@ export class StudentInfoComponent implements OnInit, OnDestroy, AfterViewInit {
   width: number = 80
   public bindingText: string;
   @ViewChild('marksstudent', { static: false }) marksStudentComponent: MarksStudentComponent;
+
+  @ViewChildren('jokes') jokes: ElementRef;
 
   public names = [
     {
@@ -57,13 +60,13 @@ export class StudentInfoComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     console.log('Im from ng onint');
     this.objectManiplation();
-    console.log(this.marksStudentComponent);
-
   }
 
   ngAfterViewInit() {
 
-    console.log('After view ')
+    console.log('After view ');
+    console.log(this.jokes)
+
   }
 
   // Object Maniplation
@@ -107,6 +110,16 @@ export class StudentInfoComponent implements OnInit, OnDestroy, AfterViewInit {
   }
   getChild(event) {
     console.log(event);
+  }
+
+  // Code for Event Emitter
+
+  incremtByOne(event) {
+    console.log(event);
+  }
+
+  decrement() {
+    this.marksStudentComponent.decreaseByOne();
   }
 
   ngOnDestroy() {

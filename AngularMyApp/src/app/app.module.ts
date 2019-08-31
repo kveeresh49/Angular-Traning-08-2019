@@ -15,6 +15,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Lab3Component } from './Lab/lab3/lab3.component';
 import { Labserice } from './Lab/labservice';
 import { MarksStudentComponent } from './student/marks-student/marks-student.component';
+import { StudentCardDetailsComponent } from './student/student-card-details/student-card-details.component';
+import { StudentCardInfoComponent } from './student/student-card-info/student-card-info.component';
+import { StudentCardInfoDateComponent } from './student/student-card-info-date/student-card-info-date.component';
+import { CustInfoComponent } from './student/content-child/cust-info/cust-info.component';
+import { CustInfoDetailsComponent } from './student/content-child/cust-info-details/cust-info-details.component';
+import { CustDateComponent } from './student/content-child/cust-date/cust-date.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +31,13 @@ import { MarksStudentComponent } from './student/marks-student/marks-student.com
     Lab1Component,
     Lab2Component,
     Lab3Component,
-    MarksStudentComponent
+    MarksStudentComponent,
+    StudentCardDetailsComponent,
+    StudentCardInfoComponent,
+    StudentCardInfoDateComponent,
+    CustInfoComponent,
+    CustInfoDetailsComponent,
+    CustDateComponent
 
 
   ],
