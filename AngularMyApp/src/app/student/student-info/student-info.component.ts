@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild, ViewChildren, ElementRef } from '@angular/core';
 import { MarksStudentComponent } from '../marks-student/marks-student.component';
 import { element } from 'protractor';
+import { SharedserviceService } from 'src/shared/sharedservice.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-info',
@@ -11,55 +13,33 @@ export class StudentInfoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   course: string = "Angular";
   Students: any = ['sandeep', 'ajay'];
-  width: number = 80
+  width: number = 80;
+  public names: any[] =[];
   public bindingText: string;
   @ViewChild('marksstudent', { static: false }) marksStudentComponent: MarksStudentComponent;
 
   @ViewChildren('jokes') jokes: ElementRef;
 
-  public names = [
-    {
-      name: 'Veeresh',
-      age: 20,
-      marks: [100, 50, 300],
-      sum: 0,
-      image: 'https://st3.depositphotos.com/5792148/13370/v/1600/depositphotos_133708068-stock-illustration-cartoon-student-desk.jpg'
-    },
-    {
-      name: 'Raj',
-      age: 20,
-      marks: [100, 100, 600],
-      sum: 0,
-      image: 'https://st3.depositphotos.com/5792148/13370/v/1600/depositphotos_133708068-stock-illustration-cartoon-student-desk.jpg'
-    },
-    {
-      name: 'ajay',
-      age: 20,
-      marks: [100, 200, 700],
-      sum: 0,
-      image: 'https://st3.depositphotos.com/5792148/13370/v/1600/depositphotos_133708068-stock-illustration-cartoon-student-desk.jpg'
-    },
-    {
-      name: 'sandeep',
-      age: 20,
-      marks: [100, 200, 1],
-      sum: 0,
-      image: 'https://st3.depositphotos.com/5792148/13370/v/1600/depositphotos_133708068-stock-illustration-cartoon-student-desk.jpg'
-    },
 
-  ];
 
 
   mypath: string = 'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_960_720.jpg' // propery binding
 
-  constructor() {
+  // private  myserve = new SharedserviceService()
+
+  constructor(private myserve: SharedserviceService, private route:Router) {
     console.log('im in constructor');
 
   }
 
   ngOnInit() {
     console.log('Im from ng onint');
-    this.objectManiplation();
+    console.log(this.names.length);
+    this.names = this.myserve.getMyfirstName();
+    console.log(this.names);
+    //this.objectManiplation();
+    this.myserve.objectManiplation(this.names);
+
   }
 
   ngAfterViewInit() {
@@ -71,18 +51,18 @@ export class StudentInfoComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // Object Maniplation
 
-  objectManiplation() {
-    this.names.forEach((data, index) => {
-      let sum1 = 0;
-      if (data.marks) {
-        data.marks.forEach((data) => {
-          sum1 += data;
-        })
-      }
-      data.sum = sum1
-    });
-    console.log(this.names);
-  }
+  // objectManiplation(this.names) {
+  //   this.names.forEach((data, index) => {
+  //     let sum1 = 0;
+  //     if (data.marks) {
+  //       data.marks.forEach((data) => {
+  //         sum1 += data;
+  //       })
+  //     }
+  //     data.sum = sum1
+  //   });
+  //   console.log(this.names);
+  // }
 
 
   myfunction(name, index) {
@@ -125,6 +105,10 @@ export class StudentInfoComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnDestroy() {
     console.log('distroed');
 
+  }
+
+  navigate(){
+ this.route.navigate(['/new-info']);
   }
 
 }

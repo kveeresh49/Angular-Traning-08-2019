@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedserviceService } from 'src/shared/sharedservice.service';
 
 @Component({
   selector: 'app-new-info',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private myserve:SharedserviceService) { }
+
+  public names = []
 
   ngOnInit() {
+
+    console.log(this.myserve.myname);
+   // this.myserve.objectManiplation(this.names)
   }
 
 }

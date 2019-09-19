@@ -11,12 +11,12 @@
     {{myNames.name}}
   </div>
 </div> -->
-
+<p appCardInfo>wel</p>
 
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Name</th>
+      <th scope="col" appCardInfo>Name</th>
       <th scope="col">Age</th>
       <th scope="col">Sum</th>
       <th scope="col">image</th>
@@ -35,11 +35,12 @@
       </th>
       <th>
         <app-marks-student #marksstudent (count1)="incremtByOne($event)" (outMethod)="getChild($event)"
-        [name]="item.name" [marks]="item.marks">
-      <form>
-        Fname <input type="text"/><br/><br/>
-        Lname <input type="text"/><br/>
-      </form></app-marks-student>
+          [name]="item.name" [marks]="item.marks">
+          <form>
+            Fname <input type="text" /><br /><br />
+            Lname <input type="text" /><br />
+          </form>
+        </app-marks-student>
 
         <br /> <br /><button (click)="decrement()" style="border-radius: 20px;">decrementByone</button>
       </th>
@@ -60,3 +61,6 @@
   <input type="text" [(ngModel)]="bindingText" id="bindingText" (change)="getChnageValue($event)" />
   {{bindingText}}
 </div>
+
+
+<button (click)="navigate()">click to navigate</button>

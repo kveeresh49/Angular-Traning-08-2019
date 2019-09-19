@@ -21,6 +21,21 @@ import { StudentCardInfoDateComponent } from './student/student-card-info-date/s
 import { CustInfoComponent } from './student/content-child/cust-info/cust-info.component';
 import { CustInfoDetailsComponent } from './student/content-child/cust-info-details/cust-info-details.component';
 import { CustDateComponent } from './student/content-child/cust-date/cust-date.component';
+import { CardInfoDirective } from './student/directive/card-info.directive';
+import { SharedserviceService } from 'src/shared/sharedservice.service';
+import { StudentModule } from './student/student/student.module';
+import { RouterModule, Routes } from '@angular/router';
+import { TemplateDrivenComponent } from './forms/template-driven/template-driven.component';
+const routes: Routes = [
+  {path:'',redirectTo:'student',pathMatch:'full'},
+  { path: 'new-info', component: NewInfoComponent },
+  { path: 'student', component: StudentInfoComponent },
+  { path: 'new-card-info', component: StudentCardInfoComponent },
+  { path: 'cust-info', component: CustInfoComponent },
+  { path: 'lab2', component: Lab2Component },
+  { path: 'lab3', component: Lab3Component },
+  {path:'template',component:TemplateDrivenComponent}
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,17 +52,21 @@ import { CustDateComponent } from './student/content-child/cust-date/cust-date.c
     StudentCardInfoDateComponent,
     CustInfoComponent,
     CustInfoDetailsComponent,
-    CustDateComponent
+    CustDateComponent,
+    CardInfoDirective,
+    TemplateDrivenComponent
 
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule
+   // AppRoutingModule,
+   RouterModule.forRoot(routes),
+   FormsModule,
+    ReactiveFormsModule,
+    StudentModule
   ],
-  providers: [Labserice],
+  providers: [Labserice,SharedserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
